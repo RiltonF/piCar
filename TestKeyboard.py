@@ -70,7 +70,7 @@ try:
 			Base.left2.stop()
 			Base.right1.stop()
 			Base.right2.stop()
-			Base.io.cleanup()
+			Base.GPIO.cleanup()
 			break
 		else:
 			Base.setDirection("0",0)
@@ -82,4 +82,4 @@ except KeyboardInterrupt:
 	Base.left2.stop()
 	Base.right1.stop()
 	Base.right2.stop()
-	Base.io.cleanup()
+	Base.GPIO.cleanup()
