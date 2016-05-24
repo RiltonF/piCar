@@ -3,14 +3,14 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 #main
-TRIG = 20 
-ECHO = 21
+TRIG = 21
+ECHO = 20
 #right
-TRIGR = 6
-ECHOR = 13
+TRIGR = 13
+ECHOR = 6
 #left
-TRIGL = 19
-ECHOL = 26 
+TRIGL = 26
+ECHOL = 19 
 
 print "Started sensor setup"
 
