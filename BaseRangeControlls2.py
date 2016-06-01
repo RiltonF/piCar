@@ -59,5 +59,5 @@ def PingSensor(trig,echo):
 	print("Distance Main: " + str(distance) + "cm")
 	return distance
 
-def CleanUP():
+def cleanUP():
     GPIO.cleanup()
