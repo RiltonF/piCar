@@ -36,7 +36,7 @@ def PingSonic(sens):
     else:
         break
 
-    retutn PingSensor(trig,echo)
+    return PingSensor(trig,echo)
 
 def PingSensor(trig,echo):
         GPIO.output(trig, False)

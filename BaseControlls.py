@@ -88,3 +88,6 @@ def turn90Left():
 	setDirection("a",stepSpeed)
 	sleep(step);
 	setDirection("0",0)
+
+def cleanUP():
+	GPIO.cleanup()
