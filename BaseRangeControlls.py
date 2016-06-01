@@ -37,13 +37,9 @@ def PingSonicMAIN ():
 	  pulse_end = time.time()
 
 	pulse_duration = pulse_end - pulse_start
-
-	distance1 = pulse_duration1 * 17150
-
-	distance1 = round(distance1, 2)
-
-	print "Distance Main: ",distance,"cm"
-
+	distance = pulse_duration * 17150
+	distance = round(distance, 2)
+	print("Distance Main: " + str(distance) + "cm")
 	return distance
 
 def PingSonicRIGHT ():
@@ -63,9 +59,9 @@ def PingSonicRIGHT ():
 
 	pulse_duration = pulse_end - pulse_start
 
-	distance1 = pulse_duration1 * 17150
+	distance = pulse_duration * 17150
 
-	distance1 = round(distance1, 2)
+	distance = round(distance, 2)
 
 	print "Distance Right: ",distance,"cm"
 
@@ -88,9 +84,9 @@ def PingSonicLEFT ():
 
 	pulse_duration = pulse_end - pulse_start
 
-	distance1 = pulse_duration1 * 17150
+	distance = pulse_duration * 17150
 
-	distance1 = round(distance1, 2)
+	distance = round(distance, 2)
 
 	print "Distance Left: ",distance,"cm"
 

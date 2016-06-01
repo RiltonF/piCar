@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys, tty, termios, os
 import BaseControlls as Base
+import RPi.GPIO as gpio
 
 speedleft = 0
 speedright = 0
@@ -70,7 +71,8 @@ try:
 			Base.left2.stop()
 			Base.right1.stop()
 			Base.right2.stop()
-			Base.GPIO.cleanup()
+                        print "CleanUp"
+			gpio.cleanup()
 			break
 		else:
 			Base.setDirection("0",0)
@@ -82,4 +84,4 @@ except KeyboardInterrupt:
 	Base.left2.stop()
 	Base.right1.stop()
 	Base.right2.stop()
-	Base.GPIO.cleanup()
+	gpio.cleanup()

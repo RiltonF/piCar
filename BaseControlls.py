@@ -5,6 +5,7 @@ GPIO.setmode(GPIO.BCM)#set pin numbering type
 #constants
 step = .75
 stepSpeed = 9
+PWM_MAX = 100
 #left motor setup
 leftmotor_in1_pin = 27
 leftmotor_in2_pin = 22
@@ -21,7 +22,7 @@ GPIO.setup(rightmotor_in2_pin, GPIO.OUT)
 left1 = GPIO.PWM(27, 500) #test the freq
 left2 = GPIO.PWM(22, 500)
 right1 = GPIO.PWM(23, 500)
-right2 = GPIO.PWM(24, 500)
+right2 = GPIO.PWM(24, 500) #24
 
 #start the PWM
 left1.start(PWM_MAX)
@@ -57,6 +58,7 @@ setMotorMode(0,0,0)
 #set direction of vehicle
 def setDirection(mode, speed):
 	#set speed
+        print 'mode:', str(mode), ' speed:',str(speed)
 	speed = speed*11
 	if speed == 99:
 		speed += 1
