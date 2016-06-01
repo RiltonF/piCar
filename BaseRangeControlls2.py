@@ -34,7 +34,7 @@ def PingSonic(sens):
         trig = TRIGR
         echo = ECHOR
     else:
-        break
+        return
 
     return PingSensor(trig,echo)
 

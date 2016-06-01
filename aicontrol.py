@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import BaseControlls as Base
-import BaseRangeControlls as Sonic
+import BaseRangeControlls2 as Sonic
 import time
 
 SPEED = 5
@@ -29,6 +29,7 @@ def pollSensors():
 	dirr = 0  # 0 straight, 1 left, 2 right
 	if mDis < trigDis:
             print 'Entered turning routine'
+            Base.setMotorMode(0,0,0) #stop
             time.sleep(0.01)
             ld = Sonic.PingSonic('left')
             print str(ld)

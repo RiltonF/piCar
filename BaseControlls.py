@@ -32,7 +32,6 @@ right2.start(PWM_MAX)
 
 #control specific motor, its direction, and speed.
 def setMotorMode(motor, mode, speed):
-    print 'motor:', motor,' mode:', mode,' speed:', speed	
     if motor == "l":
 	if mode == "r":
             left1.ChangeDutyCycle(speed)
@@ -59,7 +58,6 @@ setMotorMode(0,0,0)
 #set direction of vehicle
 def setDirection(mode, speed):
 	#set speed
-        print 'mode:', str(mode), ' speed:',str(speed)
 	speed = speed*11
 	if speed == 99:
 		speed += 1
