@@ -32,25 +32,26 @@ right2.start(PWM_MAX)
 
 #control specific motor, its direction, and speed.
 def setMotorMode(motor, mode, speed):
-	if motor == "l":
-		if mode == "r":
-                        left1.ChangeDutyCycle(speed)
-                        left2.ChangeDutyCycle(0)
-		elif mode == "f":
-                        left1.ChangeDutyCycle(0)
-                        left2.ChangeDutyCycle(speed)
-	elif motor == "r":
-		if mode == "r":
-                        right1.ChangeDutyCycle(speed)
-                        right2.ChangeDutyCycle(0)
-		elif mode == "f":
-                        right1.ChangeDutyCycle(0)
-                        right2.ChangeDutyCycle(speed)
-	else:
-		left1.ChangeDutyCycle(0)
-	       	left2.ChangeDutyCycle(0)
-		right1.ChangeDutyCycle(0)
- 	        right2.ChangeDutyCycle(0)
+    print 'motor:', motor,' mode:', mode,' speed:', speed	
+    if motor == "l":
+	if mode == "r":
+            left1.ChangeDutyCycle(speed)
+            left2.ChangeDutyCycle(0)
+	elif mode == "f":
+            left1.ChangeDutyCycle(0)
+            left2.ChangeDutyCycle(speed)
+    elif motor == "r":
+	if mode == "r":
+            right1.ChangeDutyCycle(speed)
+            right2.ChangeDutyCycle(0)
+	elif mode == "f":
+            right1.ChangeDutyCycle(0)
+            right2.ChangeDutyCycle(speed)
+    else:
+	left1.ChangeDutyCycle(0)
+       	left2.ChangeDutyCycle(0)
+	right1.ChangeDutyCycle(0)
+        right2.ChangeDutyCycle(0)
 
 #set the motor speeds to zero
 setMotorMode(0,0,0)

@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 import BaseControlls as Base
-Base.GPIO.cleanup()
 import BaseRangeControlls as Sonic
 import time
 
-SPEED = 9
+SPEED = 5
 trigDis = 15
 
 def MainLoop():
@@ -19,27 +18,32 @@ def MainSequence():
             Base.setDirection("w", SPEED)
             print 'Moving forward'
 	elif obstr == 1:
-		Base.turn90Right()
+            print 'Turning right'
+            Base.turn90Right()
 	elif obstr == 2:
-		Base.turn90Left()
+            print 'Turning left'
+            Base.turn90Left()
 
 def pollSensors():
-	mDis = Sonic.PingSonicMAIN()
+	mDis = Sonic.PingSonic('main')
 	dirr = 0  # 0 straight, 1 left, 2 right
 	if mDis < trigDis:
-		time.sleep(0.01)
-		ld = Sonic.PingSonicLEFT()
-		rd = Sonic.PingSonicRIGHT()
-		if rd > ld:
-			print("Found edge at left side!")
-			dirr = 2
-		else:
-			print("Found edge a right side!")
-			dirr = 1
+            print 'Entered turning routine'
+            time.sleep(0.01)
+            ld = Sonic.PingSonic('left')
+            print str(ld)
+	    rd = Sonic.PingSonic('right')
+	    if rd > ld:
+		print("Found edge at left side!")
+		dirr = 2
+	    else:
+		print("Found edge a right side!")
+		dirr = 1
 	else:
-		dirr = 0
+	    dirr = 0
 	return dirr
 try:
     MainLoop()
-except:
-    Base.GPIO.cleanup()
+except KeyboardInterrupt:
+    Base.cleanUP()
+    Sonic.cleanUP()
