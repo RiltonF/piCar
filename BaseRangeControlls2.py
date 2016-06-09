@@ -36,12 +36,14 @@ def PingSonic(sens):
     else:
         return
 
-    return PingSensor(trig,echo)
+    distance = PingSensor(trig,echo)
+    print 'Distance ', sens, ': ', str(distance), "cm"
+    return distance
 
 def PingSensor(trig,echo):
         GPIO.output(trig, False)
 	print "Waiting For Sensor To Settle"
-	time.sleep(2)
+	time.sleep(0.001)
 
 	GPIO.output(trig, True)
 	time.sleep(0.00001)
@@ -56,7 +58,6 @@ def PingSensor(trig,echo):
 	pulse_duration = pulse_end - pulse_start
 	distance = pulse_duration * 17150
 	distance = round(distance, 2)
-	print("Distance Main: " + str(distance) + "cm")
 	return distance
 
 def cleanUP():

@@ -3,7 +3,7 @@ from time import sleep
 GPIO.setmode(GPIO.BCM)#set pin numbering type
 
 #constants
-step = .75
+step = 0.75
 stepSpeed = 9
 PWM_MAX = 100
 #left motor setup

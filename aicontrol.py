@@ -3,8 +3,8 @@ import BaseControlls as Base
 import BaseRangeControlls2 as Sonic
 import time
 
-SPEED = 5
-trigDis = 15
+SPEED = 9
+trigDis = 10
 
 def MainLoop():
 	while True:
@@ -34,7 +34,7 @@ def pollSensors():
             ld = Sonic.PingSonic('left')
             print str(ld)
 	    rd = Sonic.PingSonic('right')
-	    if rd > ld:
+	    if rd < ld:
 		print("Found edge at left side!")
 		dirr = 2
 	    else:
