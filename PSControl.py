@@ -47,31 +47,37 @@ def makemove2(up, right, v1, v2):
 def headloop():
     with SixAxisResource() as joyst:
         while 1:
-            #Values go -1.0 to 1.0 when:
-            #x-axes: left to right
-            #y-axes: down to up
-            x1 = joyst.axes[0].corrected_value()
-            y1 = joyst.axes[1].corrected_value()
-            x2 = joyst.axes[2].corrected_value()
-            y2 = joyst.axes[3].corrected_value()
-            #
-            up = y1 > 0
-            right = x1 > 0
-            vt = max(x1,y1)
-            if abs(y1) >= abs(x1):
-                if abs(x1) >= 0.5*abs(y1):
-                    vx = (abs(x1) - 0.5*abs(y1)) * 2
-                else:
-                    vx = 0
-                vy = abs(y1)
-                makemove(up, right, vx, vy, vt)
-            elif (x1 < 0.2 and y1 < 0.2):
-                makemove2(True, True, 0, 0)
-            else:
-                altv = recalcspeed(x1, y1)
-                regv = abs(x1)
-                makemove2(up, right, regv, altv)
+            step(joyst)
 
+def step(joyst):
+    #Values go -1.0 to 1.0 when:
+    #x-axes: left to right
+    #y-axes: down to up
+    x1 = joyst.axes[0].corrected_value()
+    y1 = joyst.axes[1].corrected_value()
+    x2 = joyst.axes[2].corrected_value()
+    y2 = joyst.axes[3].corrected_value()
+    #
+    up = y1 > 0
+    right = x1 > 0
+    vt = max(x1,y1)
+    if abs(y1) >= abs(x1):
+        if abs(x1) >= 0.5*abs(y1):
+            vx = (abs(x1) - 0.5*abs(y1)) * 2
+        else:
+            vx = 0
+        vy = abs(y1)
+        makemove(up, right, vx, vy, vt)
+    elif (x1 < 0.2 and y1 < 0.2):
+        makemove2(True, True, 0, 0)
+    else:
+        altv = recalcspeed(x1, y1)
+        regv = abs(x1)
+        makemove2(up, right, regv, altv)
 
-headloop()
-
+def stepTR(joyst):
+    lt = joyst.axes[1].corrected_value()
+    rt = joyst.axes[3].corrected_value()
+    #
+    Base.setMotorMode("l", lt > 0, abs(lt)*5 + 4)
+    Base.setMotorMode("r", rt > 0, abs(rt)*5 + 4)

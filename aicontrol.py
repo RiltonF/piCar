@@ -43,8 +43,3 @@ def pollSensors():
 	else:
 	    dirr = 0
 	return dirr
-try:
-    MainLoop()
-except KeyboardInterrupt:
-    Base.cleanUP()
-    Sonic.cleanUP()
